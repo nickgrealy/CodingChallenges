@@ -1,7 +1,8 @@
+
 package org.nickgrealy.performance;
 
 /**
- * Quick and dirty, not thread safe, static implementation of a counter and timer.
+ * Quick and dirty, non thread safe, static implementation of a counter and timer.
  */
 public class QuickPerf {
 

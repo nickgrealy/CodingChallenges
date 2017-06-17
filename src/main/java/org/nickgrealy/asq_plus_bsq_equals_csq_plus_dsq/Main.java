@@ -1,9 +1,7 @@
+
 package org.nickgrealy.asq_plus_bsq_equals_csq_plus_dsq;
 
 import org.nickgrealy.performance.QuickPerf;
-
-import static org.nickgrealy.performance.QuickPerf.end;
-import static org.nickgrealy.performance.QuickPerf.start;
 
 /**
  * Print out all integers less than 10,000, where:
@@ -13,7 +11,7 @@ import static org.nickgrealy.performance.QuickPerf.start;
  */
 public class Main {
 
-    public static final int[] RESULT_RANGE = {0, 10000};
+    public static final int[] RESULT_RANGE = { 0, 10000 };
     public static final int ABCD_LOWER_BOUNDS = 0;
     public static final int ABCD_UPPER_BOUNDS = 10000;
 
@@ -27,7 +25,7 @@ public class Main {
     /**
      * Iterate over a and b, so we can find c and d...
      */
-    public static void run(int lower, int upper){
+    public static void run(int lower, int upper) {
         for (int a = lower; a <= upper; a++) {
             // a and b should not overlap... (it's redundant)
             for (int b = a + 1; b <= upper; b++) {
@@ -44,7 +42,7 @@ public class Main {
         // eliminate results greater than the upper limit...
         if (candidateResult <= RESULT_RANGE[1]) {
             // iterate over abcd range (excluding a and b)... see if we can find an integer match for c and d.
-            for (int c = lower; c <= upper && c != a && c != b; c++){
+            for (int c = lower; c <= upper && c != a && c != b; c++) {
                 QuickPerf.iterate();
                 // work backwards, to find d...
                 double doubleD = Math.sqrt(candidateResult - Math.pow(c, 2));
@@ -64,9 +62,7 @@ public class Main {
      * 2) greater than the square-root of the upper limit
      */
     public static int[] abcdRange(int[] range) {
-        return new int[]{
-                Math.max((int) Math.sqrt(range[0]), ABCD_LOWER_BOUNDS),
-                Math.min((int) Math.sqrt(range[1]), ABCD_UPPER_BOUNDS)
-        };
+        return new int[] { Math.max((int) Math.sqrt(range[0]), ABCD_LOWER_BOUNDS),
+                Math.min((int) Math.sqrt(range[1]), ABCD_UPPER_BOUNDS) };
     }
 }
