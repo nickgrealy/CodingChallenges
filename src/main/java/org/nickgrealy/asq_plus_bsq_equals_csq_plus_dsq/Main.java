@@ -11,11 +11,11 @@ import org.nickgrealy.performance.QuickPerf;
  */
 public class Main {
 
-    public static final int[] RESULT_RANGE = { 0, 10000 };
-    public static final int ABCD_LOWER_BOUNDS = 0;
-    public static final int ABCD_UPPER_BOUNDS = 10000;
+    static final int[] RESULT_RANGE = { 0, 10000 };
+    static final int ABCD_LOWER_BOUNDS = 0;
+    static final int ABCD_UPPER_BOUNDS = 10000;
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         int[] abcdRange = abcdRange(RESULT_RANGE);
         QuickPerf.start();
         run(abcdRange[0], abcdRange[1]);
@@ -25,7 +25,7 @@ public class Main {
     /**
      * Iterate over a and b, so we can find c and d...
      */
-    public static void run(int lower, int upper) {
+    public static void run(final int lower, final int upper) {
         for (int a = lower; a <= upper; a++) {
             // a and b should not overlap... (it's redundant)
             for (int b = a + 1; b <= upper; b++) {
@@ -37,7 +37,7 @@ public class Main {
     /**
      * Work backwards to find c and d...
      */
-    public static void findCandD(int a, int b, int lower, int upper) {
+    public static void findCandD(final int a, final int b, final int lower, final int upper) {
         int candidateResult = (int) (Math.pow(a, 2) + Math.pow(b, 2));
         // eliminate results greater than the upper limit...
         if (candidateResult <= RESULT_RANGE[1]) {
@@ -61,7 +61,7 @@ public class Main {
      * 1) lower than the square-root of the lower limit
      * 2) greater than the square-root of the upper limit
      */
-    public static int[] abcdRange(int[] range) {
+    public static int[] abcdRange(final int[] range) {
         return new int[] { Math.max((int) Math.sqrt(range[0]), ABCD_LOWER_BOUNDS),
                 Math.min((int) Math.sqrt(range[1]), ABCD_UPPER_BOUNDS) };
     }
