@@ -1,5 +1,10 @@
 package org.nickgrealy.asq_plus_bsq_equals_csq_plus_dsq;
 
+import org.nickgrealy.performance.QuickPerf;
+
+import static org.nickgrealy.performance.QuickPerf.end;
+import static org.nickgrealy.performance.QuickPerf.start;
+
 /**
  * Print out all integers less than 10,000, where:
  * 1) a²+b²=c²+d²
@@ -14,7 +19,9 @@ public class Main {
 
     public static void main(String[] args) {
         int[] abcdRange = abcdRange(RESULT_RANGE);
+        QuickPerf.start();
         run(abcdRange[0], abcdRange[1]);
+        QuickPerf.end();
     }
 
     /**
@@ -38,6 +45,7 @@ public class Main {
         if (candidateResult <= RESULT_RANGE[1]) {
             // iterate over abcd range (excluding a and b)... see if we can find an integer match for c and d.
             for (int c = lower; c <= upper && c != a && c != b; c++){
+                QuickPerf.iterate();
                 // work backwards, to find d...
                 double doubleD = Math.sqrt(candidateResult - Math.pow(c, 2));
                 int d = (int) doubleD;
