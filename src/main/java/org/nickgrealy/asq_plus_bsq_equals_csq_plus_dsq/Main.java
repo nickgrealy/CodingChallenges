@@ -44,7 +44,7 @@ public class Main {
                 // if d is an integer, and doesn't equal a,b or c, then we have a winner!
                 if (d == doubleD && d != a && d != b && d != c) {
                     // we have a winner!
-                    System.out.println(a + "²+" + b + "² = " + c + "²+" + d + "² = " + candidateResult);
+                    System.out.printf("%s²+%s² = %s²+%s² = %s%n", a, b, c, d, candidateResult);
                 }
             }
         }
