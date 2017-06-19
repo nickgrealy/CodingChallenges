@@ -1,6 +1,6 @@
 # Challenge:
 
-Given a BST (Binary Search Tree), write a function that receives the root fo the tree, and 2 values, then find the LCA (Lowest Common Ancestor).
+Given a BST (Binary Search Tree), write a function that receives the root of the tree, and 2 values, then find the LCA (Lowest Common Ancestor).
 
 ### Assumptions:
 
