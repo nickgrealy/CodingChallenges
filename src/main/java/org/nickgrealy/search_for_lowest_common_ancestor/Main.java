@@ -1,6 +1,9 @@
 package org.nickgrealy.search_for_lowest_common_ancestor;
 
+import org.nickgrealy.performance.QuickPerf;
+
 import static java.util.Objects.nonNull;
+import static org.nickgrealy.search_for_lowest_common_ancestor.Main.Node.of;
 
 /**
  * Given a BST (Binary Search Tree), write a function that receives the root fo the tree, and 2 values, then find the LCA (Lowest Common Ancestor).
@@ -8,6 +11,11 @@ import static java.util.Objects.nonNull;
 public class Main {
 
     static class Node {
+        public static Node of(String value) {
+            Node node = new Node();
+            node.value = value;
+            return node;
+        }
         public static Node of(String value, Node left, Node right) {
             Node node = new Node();
             node.value = value;
@@ -19,13 +27,35 @@ public class Main {
         public Node left, right;
     }
 
+    static final Node root = of("A",
+            of("B",
+                    of("D",
+                            of("G"),
+                            null),
+                    null),
+            of ("C",
+                    of("E"),
+                    of("F",
+                            of("H"),
+                            of("I"))));
+
+    public static void main(String[] args) {
+        QuickPerf.start();
+        NodeWrapper result = find(root, "E", "I");
+        System.out.println(result.lca.value);
+        QuickPerf.end();
+    }
+
+    /* --- Solution --- */
+
     static class NodeWrapper {
         Node lca;
         boolean foundLeft = false;
         boolean foundRight = false;
     }
 
-    public NodeWrapper find(Node root, String a, String b) {
+    public static NodeWrapper find(Node root, String a, String b) {
+        QuickPerf.iterate();
         // check for scenario where A or B are current node...
         NodeWrapper tmp = new NodeWrapper();
         if (root.value.equals(a)) {
